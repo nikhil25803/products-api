@@ -28,4 +28,4 @@ app.add_middleware(
 
 app.include_router(products_route.router)
 
-models.Base.metadata.create_all(engine)
+# models.Base.metadata.create_all(engine)

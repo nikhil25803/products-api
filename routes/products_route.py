@@ -1,5 +1,6 @@
-from fastapi import APIRouter, File
+from fastapi import APIRouter, File, Query
 from fastapi import Depends
+from typing import Optional
 from db.schema import ProductBase, ProductDisplay, ProductUpdate
 from sqlalchemy.orm.session import Session
 from db.db import get_db
@@ -15,7 +16,7 @@ async def insert_product(
     name: str = Form(...),
     category: str = Form(...),
     brand_name: str = Form(...),
-    image : UploadFile = File(...)
+    image : UploadFile = File(...),
 ):
     
 
@@ -27,6 +28,11 @@ async def insert_product(
     }
 
     return product_controller.insert_product(db, request)
+
+@router.get('/')
+def get_products(db:Session = Depends(get_db), search:Optional[str] = Query(None)):
+
+    return product_controller.get_products(db=db, search=search)
 
 
 @router.put('/{id}', response_model=ProductDisplay)
