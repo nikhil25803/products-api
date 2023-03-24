@@ -15,11 +15,7 @@ def insert_product(db:Session, request:ProductBase):
     db.add(new_product)
     db.commit()
     db.refresh(new_product)
-    return {
-        "status":status.HTTP_201_CREATED,
-        "data":new_product
-    }
-
+    return new_product
 
 def update_product(id:int, db:Session, request:ProductUpdate):
     product = db.query(Products).filter(Products.id == id).first()
