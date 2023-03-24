@@ -1,5 +1,5 @@
 # Products API
-An products APIs to manage catalog with integration of AWS S3 as file storage service and SQLite as database.
+A products APIs to manage catalog with integration of AWS S3 as file storage service and SQLite as database.
 
 ### Project setup
 + Fork and clone the repository
@@ -59,5 +59,5 @@ Add the mentioned fields respectively
         "image_url": "string"
     }
     ```
-+ **Put** `products/{id}` - Update a the product
++ **Put** `products/{id}` - Update a product by id.
 + **Delete** `products/{id}` - Delete a product by id.
