@@ -1,16 +1,30 @@
-from fastapi import APIRouter
-from fastapi import Depends, File, UploadFile
+from fastapi import APIRouter, File
+from fastapi import Depends
 from db.schema import ProductBase, ProductDisplay, ProductUpdate
 from sqlalchemy.orm.session import Session
 from db.db import get_db
 from controllers import product_controller
+from fastapi import UploadFile, Form
 
 router = APIRouter(prefix="/products", tags=["product"])
 
 
 @router.post('/')
-async def insert_product(request: ProductBase,files: UploadFile = File(...), db: Session = Depends(get_db)):
-    print(files.filename)
+async def insert_product(
+    db: Session = Depends(get_db),
+    name: str = Form(...),
+    category: str = Form(...),
+    brand_name: str = Form(...),
+    image : UploadFile = File(...)
+):
+    
+
+    request = {
+        "name": name,
+        "category": category,
+        "brand_name": brand_name,
+        "image_data": image
+    }
 
     return product_controller.insert_product(db, request)
 

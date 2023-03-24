@@ -9,3 +9,4 @@ class Products(Base):
     name = Column(String)
     category = Column(String)
     brand_name = Column(String)
+    image_url = Column(String)
