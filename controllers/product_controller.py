@@ -1,8 +1,7 @@
 from sqlalchemy.orm.session import Session
-from typing import Optional
-from db.schema import ProductBase, ProductUpdate
+from db.schema import ProductUpdate
 from db.models import Products
-from fastapi import status, HTTPException, File, Query
+from fastapi import status, HTTPException, File
 from dotenv import load_dotenv
 import os
 import datetime

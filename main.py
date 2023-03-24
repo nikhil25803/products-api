@@ -12,10 +12,11 @@ app = FastAPI()
 @app.get("/")
 def home():
     response = {
-        "status":status.HTTP_200_OK,
-        "data":"Server is running"
+        "status": status.HTTP_200_OK,
+        "data": "Server is running"
     }
     return response
+
 
 app.add_middleware(
     CORSMiddleware,

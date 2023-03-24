@@ -6,7 +6,7 @@ SQLALCHEMY_DATABASE_URl = "sqlite:///./products.db"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URl,
-    connect_args={"check_same_thread":False}
+    connect_args={"check_same_thread": False}
 )
 
 
